@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+echo "Which configurations do you want to install?"
+echo "1. Common"
+echo "2. MacOS"
+echo "3. Ubuntu"
+echo "4. Scripts"
+read -p "Enter the number (e.g., 1): " choice
+
+case $choice in
+  1)
+    CONFIG_DIR="common"
+    ;;
+  2)
+    CONFIG_DIR="macos"
+    ;;
+  3)
+    CONFIG_DIR="ubuntu"
+    ;;
+  4)
+    CONFIG_DIR="scripts"
+    ;;
+  *)
+    echo "Invalid choice. Exiting."
+    exit 1
+    ;;
+esac
+
+echo "Stowing $CONFIG_DIR"
+stow -t ~/ -d $CONFIG_DIR .
+
+echo "Configurations installed successfully."
